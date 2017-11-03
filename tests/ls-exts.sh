@@ -31,4 +31,9 @@ test_dot_files() {
     assert 'a b' 0 "$o" "$e"
 }
 
+test_filter() {
+    e=0; o=`echo 'a b.c d' | $r/bin/ls-exts.sh` || e=$?
+    assert 'c d' 0 "$o" "$e"
+}
+
 . tests/run.sh
