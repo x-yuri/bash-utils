@@ -7,6 +7,12 @@ test_ext() {
     assert 'c d' 0 "$o" "$e"
 }
 
+test_no_ext() {
+    mkfile 'a b'
+    e=0; o=`$r/bin/ls-exts.sh` || e=$?
+    assert '' 0 "$o" "$e"
+}
+
 test_dir() {
     _mkdir 'a b.c d'
     e=0; o=`$r/bin/ls-exts.sh` || e=$?
